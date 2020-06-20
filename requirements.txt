@@ -1,0 +1,14 @@
+psycopg2-binary==2.8.5
+pytz==2020.1  #  (from django==2.2.13)
+sqlparse==0.3.1  #  (from django==2.2.13)
+django==2.2.13
+djangorestframework==3.11.0
+importlib-metadata==1.6.1  # (from markdown==3.2.2)
+zipp==1.2.0  # (from markdown==3.2.2)
+markdown==3.2.2  # (Markdown support for the browsable API.)
+django-filter==2.3.0  # Filtering support
+django-cors-headers==3.4.0
+pytest==5.4.3
+pytest-django==3.9.0
+coverage==5.1
+pytest-cov==2.10.0

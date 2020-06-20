@@ -1,0 +1,20 @@
+[run]
+data_file = reports/.coverage
+
+omit =
+    */migrations*
+    */admin*
+    */tests*
+
+[report]
+ignore_errors = True
+exclude_lines =
+   pragma: no cover
+   raise NotImplementedError
+
+[html]
+title = Test Coverage Report
+directory = reports/html_coverage
+
+[xml]
+output = reports/coverage.xml
