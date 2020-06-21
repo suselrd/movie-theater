@@ -18,11 +18,13 @@ In order to make things easier we have assumed:
 * All seats available for a showtime have the same price (no VIP seats, or anything like it)
 
 
+Also, there is no real payment when "buying" tickets.
+
 ## Installation
 
 The solution uses Python 3.6.
 
-1. Create a new virtualenv and activate it.
+1. Create a new virtualenv and **activate it**.
 2. Install the requirements:
 
         $ pip install -r <path_to_project_directory>/requirements.txt
@@ -30,7 +32,7 @@ The solution uses Python 3.6.
 
 ## Configuration (local settings)
 
-If you are going to use a Postgres server running on localhost, you will all need to set the following environment variables:
+If you are going to use a Postgres server running on localhost, you will need to set the following environment variables:
 
         SECRET_KEY=<secret_key_here>
         POSTGRES_USER=<user>
@@ -93,7 +95,7 @@ To run and test the API:
 ## Interacting with the API
 
 1. If you use a browser to access the API, a browsable, human friendly format will be served.
-2. If you want to access the API programmaticaly just make sure to ask for the proper format by adding the following querystring argument:
+2. If you want to access the API programmatically just make sure to ask for the proper format by adding the following querystring argument:
 
         ?format=json
 
@@ -220,3 +222,5 @@ Unit tests are written using **pytest**
 To run the test suite and generate coverage report (in the terminal and in an html page):
 
     pytest -v --cov rooms --cov movies --cov schedule --cov tickets --cov-report term --cov-report html
+
+**Note**: If you are using a virtualenv make sure it is active
