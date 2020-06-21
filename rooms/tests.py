@@ -1,8 +1,10 @@
-import pytest
 from datetime import timedelta
+
+import pytest
 from django.utils import timezone
 from rest_framework import status
 from rest_framework.reverse import reverse
+
 # noinspection PyUnresolvedReferences
 from movies.tests import movie
 from .models import Room
@@ -45,7 +47,7 @@ def room_with_playing_showtime(room, movie):
     showtime = Showtime(
         room=room,
         movie=movie,
-        start=timezone.now() - timedelta(minutes=movie.duration//2),
+        start=timezone.now() - timedelta(minutes=movie.duration // 2),
         price=10
     )
     showtime.save()
@@ -57,7 +59,7 @@ def room_queryset():
     for i in range(1, 6):
         room_i = Room(
             name='room_name_%d' % i,
-            capacity=i*100
+            capacity=i * 100
         )
         room_i.save()
     return Room.objects.all()

@@ -1,16 +1,18 @@
 import logging
 from datetime import timedelta
+
 from django.db import models
 from django.db.models.aggregates import Sum
 from django.dispatch import receiver
 from django.utils.translation import ugettext as _
-from rooms.models import Room
+
 from movies.models import Movie
+from rooms.models import Room
 
 logger = logging.getLogger(__name__)
 
 
-class Showtime (models.Model):
+class Showtime(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE, verbose_name=_('room'))
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, verbose_name=_('movie'))
     start = models.DateTimeField(_('starts at'))

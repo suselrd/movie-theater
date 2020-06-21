@@ -1,12 +1,12 @@
 import logging
+
 from django.db import models
 from django.utils.translation import ugettext as _
-
 
 logger = logging.getLogger(__name__)
 
 
-class Movie (models.Model):
+class Movie(models.Model):
     title = models.CharField(_('title'), max_length=1000)
     duration = models.PositiveSmallIntegerField(_('duration'), help_text=_('duration in minutes'))
 

@@ -1,7 +1,9 @@
 import logging
+
 from django.db import models
 from django.dispatch import receiver
 from django.utils.translation import ugettext as _
+
 from schedule.models import Showtime
 
 logger = logging.getLogger(__name__)

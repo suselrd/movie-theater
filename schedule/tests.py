@@ -1,5 +1,6 @@
-import pytest
 from datetime import timedelta
+
+import pytest
 from django.utils import timezone
 from rest_framework import status
 from rest_framework.reverse import reverse
@@ -8,7 +9,6 @@ from rest_framework.reverse import reverse
 from movies.tests import movie, movie_queryset
 # noinspection PyUnresolvedReferences
 from rooms.tests import room, room_queryset
-
 from .models import Showtime
 
 

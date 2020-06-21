@@ -1,12 +1,11 @@
 from rest_framework import viewsets
 from rest_framework.filters import SearchFilter
+
 from .models import Showtime
 from .serializers import ShowtimeSerializer
 
 
-class ShowtimeViewSet(
-    viewsets.ModelViewSet
-):
+class ShowtimeViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows showtimes to be viewed or edited.
     """

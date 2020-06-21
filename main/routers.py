@@ -1,4 +1,5 @@
 from collections import OrderedDict
+
 from django.conf.urls import url
 from rest_framework import routers
 from rest_framework.settings import api_settings
@@ -6,7 +7,6 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 
 class MainRouter(routers.SimpleRouter):
-
     root_view_name = 'api-root'
     default_schema_renderers = None
     APIRootView = routers.APIRootView

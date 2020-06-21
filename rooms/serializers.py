@@ -1,10 +1,10 @@
 from rest_framework import serializers
+
 from schedule.models import Showtime
 from .models import Room
 
 
 class RoomShowtimeSerializer(serializers.ModelSerializer):
-
     movie = serializers.StringRelatedField()
     is_playing = serializers.SerializerMethodField()
 

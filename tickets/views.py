@@ -1,5 +1,5 @@
 from rest_framework import viewsets, mixins
-from rest_framework.filters import SearchFilter
+
 from .models import Booking
 from .serializers import BookingSerializer
 

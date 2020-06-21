@@ -1,9 +1,9 @@
 import pytest
 from rest_framework import status
 from rest_framework.reverse import reverse
+
 # noinspection PyUnresolvedReferences
 from schedule.tests import showtime, room, movie
-
 from .models import Booking
 
 

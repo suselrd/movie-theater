@@ -1,14 +1,14 @@
 import logging
+
 from django.db import models
 from django.db.models import Case, Value, When
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 
-
 logger = logging.getLogger(__name__)
 
 
-class Room (models.Model):
+class Room(models.Model):
     name = models.CharField(_('name'), max_length=1000)
     capacity = models.PositiveSmallIntegerField(_('capacity'), help_text=_('number of seats'))
 

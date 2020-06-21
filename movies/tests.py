@@ -28,7 +28,7 @@ def movie_queryset():
     for i in range(1, 6):
         movie_i = Movie(
             title='movie_title_%d' % i,
-            duration=100 + i*10
+            duration=100 + i * 10
         )
         movie_i.save()
     return Movie.objects.all()
