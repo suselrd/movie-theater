@@ -124,16 +124,6 @@ LOGGING = {
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
             'propagate': False
         },
-        'stripe': {
-            'handlers': ALL_HANDLERS,
-            'level': os.getenv('STRIPE_LOG_LEVEL', 'ERROR'),
-            'propagate': False
-        },
-        'celery': {
-            'handlers': ALL_HANDLERS,
-            'level': os.getenv('CELERY_LOG_LEVEL', 'ERROR'),
-            'propagate': False
-        }
     },
 }
 
