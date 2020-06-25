@@ -8,7 +8,7 @@ from rest_framework.reverse import reverse
 # noinspection PyUnresolvedReferences
 from movies.tests import movie, movie_queryset
 # noinspection PyUnresolvedReferences
-from rooms.tests import room, room_queryset
+from rooms.tests import room, room_queryset, room_with_upcoming_showtime
 from .models import Showtime
 
 
@@ -141,3 +141,37 @@ class TestViews:
         showtime = Showtime.objects.first()
         assert showtime.room.pk == data['room']
         assert showtime.movie.pk == data['movie']
+
+    def test_showtime_view_set_post_with_overlapping(self, api_client, room_with_upcoming_showtime, movie):
+        """Test the ShowtimeViewSet showtime creation when there is overlapping with an already scheduled movie."""
+        upcoming_showtime = room_with_upcoming_showtime.upcoming_showtimes.first()
+        scheduled_start, scheduled_end = upcoming_showtime.start, upcoming_showtime.end
+        data = {
+            "room": room_with_upcoming_showtime.pk,
+            "movie": movie.pk,
+            "start": scheduled_start + timedelta(minutes=10),
+            "price": 10.00
+        }
+        response = api_client.post(reverse('showtime-list'), data)
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert response.data['non_field_errors'][0] == 'Can not schedule this movie, the room is being used.'
+
+        data = {
+            "room": room_with_upcoming_showtime.pk,
+            "movie": movie.pk,
+            "start": scheduled_start - timedelta(minutes=10),
+            "price": 10.00
+        }
+        response = api_client.post(reverse('showtime-list'), data)
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert response.data['non_field_errors'][0] == 'Can not schedule this movie, the room is being used.'
+
+        data = {
+            "room": room_with_upcoming_showtime.pk,
+            "movie": movie.pk,
+            "start": scheduled_start,
+            "price": 10.00
+        }
+        response = api_client.post(reverse('showtime-list'), data)
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert response.data['non_field_errors'][0] == 'Can not schedule this movie, the room is being used.'

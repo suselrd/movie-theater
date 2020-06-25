@@ -1,5 +1,6 @@
 import logging
 
+from django.core.validators import MinValueValidator
 from django.db import models
 from django.dispatch import receiver
 from django.utils.translation import ugettext as _
@@ -13,7 +14,9 @@ class Booking(models.Model):
     showtime = models.ForeignKey(Showtime, on_delete=models.CASCADE, verbose_name=_('showtime'))
     created = models.DateTimeField(_('created at'), auto_now_add=True)
     paid_amount = models.DecimalField(_('paid amount'), max_digits=10, decimal_places=2, editable=False)
-    seats = models.SmallIntegerField(_('seats'), blank=True, default=1)
+    seats = models.PositiveSmallIntegerField(
+        _('seats'), blank=True, default=1, validators=(MinValueValidator(limit_value=1),)
+    )
 
     class Meta:
         verbose_name = _("booking")
